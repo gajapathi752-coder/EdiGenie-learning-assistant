@@ -1,0 +1,103 @@
+EduGenie: Google Gemini Powered Learning Assistant
+Project Description
+EduGenie is a lightweight AI-powered educational assistant that simplifies learning through generative AI. Designed for students of all academic levels, EduGenie enables users to:
+?Ask questions and receive smart, concise answers
+?Summarize long educational passages into short, clear points
+?Generate multiple-choice quizzes from any topic
+Built with FastAPI for the backend and a simple HTML + CSS frontend, EduGenie leverages Google's Gemini API for fast, cloud-based AI inference. It runs locally on any system with Python installed, making it accessible to a broad range of learners and developers.
+Scenarios
+Scenario 1: A student wants to understand a concept and asks EduGenie, "What is Photosynthesis?" through the Q&A module.
+Scenario 2: A learner has a long paragraph from a textbook and uses the Summarize module to get a short, easy-to-revise version.
+Scenario 3: A student preparing for an exam enters a topic like "Solar System" into the Quiz module and instantly receives multiple-choice questions to test their understanding.
+Pre-requisites
+Python 3.10+
+Official Documentation: Python.org
+Installation Steps:
+?Download the latest Python 3.10+ installer for your operating system from the official website.
+?Run the installer and ensure you check the box that says "Add Python to PATH".
+?Follow the installation prompts to complete the setup.
+?Verify the installation by opening a terminal or command prompt and typing python --version.
+FastAPI Framework
+Official Documentation: fastapi.tiangolo.com
+HTML & CSS – Basic templating used in the frontend folder
+Google Gemini API Key
+Official Documentation: Google AI for Developers
+Setup Steps:
+?Visit Google AI Studio (aistudio.google.com) and sign in with a Google account.
+?Click "Create API Key" to generate a new key.
+?Copy and securely store the generated key.
+Uvicorn (ASGI Server)
+Official Documentation: PyPI
+Uvicorn is the server that runs the FastAPI application. It was installed automatically along with the other dependencies (FastAPI, google-generativeai, pydantic) by running:
+pip install -r requirements.txt
+The server was then started using: python -m uvicorn main:app --reload
+Project Workflow
+MILESTONE 1: Model Selection and Architecture
+Activity 1.1: Select AI Model
+Gemini Flash (via API):
+?Used for: Q&A, Summarization, and Quiz generation
+?Benefits: Fast response time, low cost, strong reasoning, and structured (JSON) output support
+Folder Architecture:
+EduGenie/
+  backend/
+    main.py           - FastAPI app and Gemini API integration
+    requirements.txt  - Python dependencies
+  frontend/
+    index.html        - UI (HTML + CSS + JS)
+MILESTONE 2: Core Functionalities Development
+Activity 2.1: Module Implementation
+Q&A Module
+EduGenie is powered by the Gemini Flash model, enabling it to handle a wide range of general knowledge and academic question-answering tasks quickly and accurately. Its contextual understanding makes it an effective tool for learners seeking clear, AI-driven answers across diverse subjects.
+Summary Module
+This feature leverages Gemini's generative capabilities to summarize long paragraphs into concise, easy-to-understand bullet points, making it ideal for quick revision. It retains the core information while eliminating redundancy, helping learners absorb key points efficiently.
+Quiz Module
+EduGenie generates multiple-choice questions (MCQs) on any topic the user enters, each with four carefully crafted options. It uses the Gemini model to ensure the questions are relevant and the distractor options are plausible. The final output is structured in JSON format for easy rendering on the frontend.
+After selecting an answer for each question, the user clicks "Submit Answers" to instantly see feedback: the correct option is highlighted in green, an incorrectly chosen option is highlighted in red, and a total score (e.g. 3/5) is displayed.
+The module sends a structured prompt to the model, expecting a valid JSON response with each question containing four options and a correct answer. Markdown code fences in the response are stripped before parsing to ensure clean JSON. If an error occurs during generation or parsing, a detailed error message is returned for debugging.
+Activity 2.2: Backend API with FastAPI
+Defined RESTful endpoints for each module:
+?/api/qa
+?/api/summarize
+?/api/quiz
+Each endpoint receives a JSON request, builds a prompt, calls the Gemini API, and returns a structured JSON response to the frontend.
+MILESTONE 3: Frontend Development
+Activity 3.1: Build Web Interface
+HTML Page (index.html):
+?Tabbed interface (Q&A, Summarize, Quiz)
+?Text area / input fields for user input
+?Submit buttons for each module
+CSS Styling (inline in index.html):
+?Responsive, card-based design
+?Styled tabs, buttons, input areas, and result containers
+Activity 3.2: Live Integration
+?Form submission sends a POST request to the FastAPI backend using fetch()
+?Result appears below the input box in real-time
+MILESTONE 4: Deployment
+Activity 4.1: Run Locally
+Run locally with:
+uvicorn main:app --reload
+Navigate to:
+http://127.0.0.1:8000
+Activity 4.2: Functional Testing
+?Ask a question
+?Summarize content
+?Generate a quiz
+Exploring EduGenie
+Asking questions:
+Summarizing long paragraphs:
+Generating quizzes:
+It generates multiple-choice questions with 4 options each on any topic entered by the user.
+Conclusion
+EduGenie has been developed as a lightweight and accessible AI-powered educational assistant that integrates cloud-based intelligence with a simple, intuitive web interface. Designed to support self-learners and students, EduGenie simplifies complex concepts by providing instant question-and-answer interactions, concise summaries, and topic-based quizzes.
+Throughout the development of EduGenie, the project achieved key milestones in AI integration, backend API design, and frontend development. Leveraging Google's Gemini API, it transforms static learning material into an interactive, on-demand study companion.
+The development process included challenges such as ensuring accurate AI-generated responses, correctly parsing structured JSON output for the quiz module, and setting up the local development environment. Overcoming these required careful prompt design, testing, and debugging.
+Looking ahead, EduGenie holds potential for future enhancement, including personalized learning paths, progress tracking, multilingual support, and deployment as a hosted web application accessible to a wider audience.
+In conclusion, EduGenie demonstrates how generative AI can be applied to build a practical, easy-to-use learning tool with a small, focused feature set — making study support faster and more accessible.
+
+Submitted by:
+Baby kiruthika N [25UCA257225]
+Saranya S [25UCA257233]
+Jayalakshmi S [25UCA257228]
+Akshaya P [25UCA257223]
+Mentor: [Durga D]
+Date: 26/09/2026
